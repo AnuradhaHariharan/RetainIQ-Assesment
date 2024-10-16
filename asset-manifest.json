@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/RetainIQ-Assesment/static/css/main.f9c49d29.css",
+    "main.css": "/RetainIQ-Assesment/static/css/main.05a602ad.css",
     "main.js": "/RetainIQ-Assesment/static/js/main.5d557d31.js",
     "static/js/453.ed3810f9.chunk.js": "/RetainIQ-Assesment/static/js/453.ed3810f9.chunk.js",
     "static/media/fa-solid-900.ttf": "/RetainIQ-Assesment/static/media/fa-solid-900.07ed6d5fa32c1d54af0f.ttf",
@@ -12,12 +12,12 @@
     "static/media/fa-v4compatibility.ttf": "/RetainIQ-Assesment/static/media/fa-v4compatibility.0f6cb412603527bda691.ttf",
     "static/media/fa-v4compatibility.woff2": "/RetainIQ-Assesment/static/media/fa-v4compatibility.6cfec8414be20e2c3426.woff2",
     "index.html": "/RetainIQ-Assesment/index.html",
-    "main.f9c49d29.css.map": "/RetainIQ-Assesment/static/css/main.f9c49d29.css.map",
+    "main.05a602ad.css.map": "/RetainIQ-Assesment/static/css/main.05a602ad.css.map",
     "main.5d557d31.js.map": "/RetainIQ-Assesment/static/js/main.5d557d31.js.map",
     "453.ed3810f9.chunk.js.map": "/RetainIQ-Assesment/static/js/453.ed3810f9.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.f9c49d29.css",
+    "static/css/main.05a602ad.css",
     "static/js/main.5d557d31.js"
   ]
 }
