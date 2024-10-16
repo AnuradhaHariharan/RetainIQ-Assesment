@@ -2,7 +2,7 @@ import React from 'react';
 import './Heading.css';
 
 function Heading({ columnCount }) {
-  const headings = ['Product Filter', 'Primary Variant']; // Basic headings
+  const headings = ['','Product Filter', 'Primary Variant']; // Basic headings
 
   // Generate dynamic headings based on column count
   for (let i = 2; i <= columnCount; i++) {

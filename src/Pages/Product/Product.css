@@ -66,6 +66,7 @@
     padding: 60px;
     background-color: white;
     height: 160px;
+    flex-shrink: 0;
   }
   
   .product-filter {
@@ -88,7 +89,9 @@
     border: 1px solid #ccc;
     border-radius: 5px;
     background-color: #fff;
+  
   }
+  
   
   
   
@@ -162,10 +165,12 @@
     background-color: white;
     border: 1px solid #e5dada;
     padding: 5px;
+    font-size: 12px;
     border-radius: 5px;
   }
   .test-text {
     font-size: 2rem;
+    cursor: pointer;
     
   }
   .custom-underline {
@@ -191,12 +196,12 @@
   align-items: center;
 }
 .badge {
-  background-color: #e0f7fa; /* Very light sky blue */
-  color: #0288d1; /* Sky blue for text */
+  background-color: #5a95c21f; /* Very light sky blue */
+  color: #0972d4; /* Sky blue for text */
   border: 1px solid #0288d1; /* Sky blue border */
-  padding: 1px 10px; /* Optional: Padding to make it look better */
+  padding: 3px 10px; /* Optional: Padding to make it look better */
   border-radius: 15px; /* Rounded corners */
-  font-size: 14px; /* Adjust as needed */
+  font-size: 12px; /* Adjust as needed */
   display: inline-block; /* Make sure it fits around the text */
   margin-left: 100px;
 }
@@ -237,6 +242,7 @@
 }
 .delete-container-box {
   width: 40px;
+  flex-shrink: 0;
 }
 
 

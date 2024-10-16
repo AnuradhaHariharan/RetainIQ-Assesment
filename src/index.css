@@ -15,4 +15,7 @@ body {
 .main-content {
   padding: 5vh 15vh;
  }
- 
+ a {
+  text-decoration: none;
+  color: black;
+ }

@@ -7,6 +7,10 @@ h3 {
     font-weight: 500;
     color: #546b9b;
   }
+  .heading-cell:first-child {
+    flex: 0.5; /* Make the first cell half the width of other cells */
+  }
+ 
   
   .heading:after {
     content: ''; /* Creates a pseudo-element */
@@ -29,9 +33,9 @@ h3 {
   }
   
   .heading-cell {
-    flex: 1; /* Allows each cell to grow equally */
+    flex: 1 1 auto; /* Allows each cell to grow equally */
     text-align: center; /* Centers the text in each cell */
-    min-width: 120px; /* Sets a minimum width for each heading cell */
+    min-width: 244px; /* Sets a minimum width for each heading cell */
   }
   
   .heading-cell h3 {

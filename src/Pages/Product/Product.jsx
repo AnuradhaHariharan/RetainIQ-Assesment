@@ -169,9 +169,9 @@ function Row({ row, rowIndex, addColumn, handleImageUpload, deleteRow, deleteCol
       <div className='divider'></div>
       <div className='filter-container'>
         <div className="product-filter">
-          <button value="anarkali-kurthi" className="filter-button">Product Collection</button>
-          <button value="lehenga" className="filter-button">Contains</button>
-          <button value="saree" className="filter-button">Anarkali</button>
+          <a href="#anarkali-kurthi" className="filter-button">Product Collection</a>
+          <a href="#contains" className="filter-button">Contains</a>
+          <a href="#anarkali" className="filter-button">Anarkali</a>
         </div>
       </div>
       <div className='divider'></div>
@@ -230,24 +230,21 @@ function Column({ content, image, imageName, rowId, columnId, handleImageUpload,
       {!image && (
         <>
           <AddPhotoAlternateOutlinedIcon 
-            className="upload-icon" 
             onClick={handleIconClick} 
-            style={{ cursor: 'pointer', fontSize: '40px' }} 
+            className='upload-image-icon'
           />
-          <div className="column-content">{content}</div>
+          <span>{content}</span>
         </>
       )}
-
       {image && (
-        <>
-          <img src={image} alt="Uploaded" className="uploaded-image" />
-          <div className="image-name">{imageName}</div> {/* Display image name */}
-        </>
+        <div className="image-container">
+          <img src={image} alt={imageName} />
+          <p>{imageName}</p>
+          <button className="delete-button" onClick={deleteColumn}>
+            <i className="fa-solid fa-trash"></i>
+          </button>
+        </div>
       )}
-
-      <button className={`delete-column-button ${isHovered ? 'visible' : 'hidden'}`} onClick={deleteColumn}>
-        <i className="fa-solid fa-trash"></i>
-      </button>
     </div>
   );
 }
