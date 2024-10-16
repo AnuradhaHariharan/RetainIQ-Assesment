@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/RetainIQ-Assesment/static/css/main.1306895a.css",
+    "main.js": "/RetainIQ-Assesment/static/js/main.e4c2849a.js",
+    "static/js/453.ed3810f9.chunk.js": "/RetainIQ-Assesment/static/js/453.ed3810f9.chunk.js",
+    "static/media/fa-solid-900.ttf": "/RetainIQ-Assesment/static/media/fa-solid-900.07ed6d5fa32c1d54af0f.ttf",
+    "static/media/fa-brands-400.ttf": "/RetainIQ-Assesment/static/media/fa-brands-400.0ff70dcbf135d859ebf3.ttf",
+    "static/media/fa-solid-900.woff2": "/RetainIQ-Assesment/static/media/fa-solid-900.93f719f4d62bfa3e748c.woff2",
+    "static/media/fa-brands-400.woff2": "/RetainIQ-Assesment/static/media/fa-brands-400.bb8d5a145e22822103fb.woff2",
+    "static/media/fa-regular-400.ttf": "/RetainIQ-Assesment/static/media/fa-regular-400.17a6e1aebccdbaa39e78.ttf",
+    "static/media/fa-regular-400.woff2": "/RetainIQ-Assesment/static/media/fa-regular-400.bc3722686635b5f86132.woff2",
+    "static/media/fa-v4compatibility.ttf": "/RetainIQ-Assesment/static/media/fa-v4compatibility.0f6cb412603527bda691.ttf",
+    "static/media/fa-v4compatibility.woff2": "/RetainIQ-Assesment/static/media/fa-v4compatibility.6cfec8414be20e2c3426.woff2",
+    "index.html": "/RetainIQ-Assesment/index.html",
+    "main.1306895a.css.map": "/RetainIQ-Assesment/static/css/main.1306895a.css.map",
+    "main.e4c2849a.js.map": "/RetainIQ-Assesment/static/js/main.e4c2849a.js.map",
+    "453.ed3810f9.chunk.js.map": "/RetainIQ-Assesment/static/js/453.ed3810f9.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.1306895a.css",
+    "static/js/main.e4c2849a.js"
+  ]
+}
