@@ -1,30 +1,52 @@
 .sidebar {
-    width: 10vh;
-    height: 100vh;
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: black;
-    color: white;
-    padding-top: 20px;
-  }
-  
-  .sidebar-menu {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .sidebar-item {
-    padding: 10px 20px;
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-  }
-  
-  .sidebar-item:hover {
-    background-color: #333;
-  }
-  
-  .sidebar-item svg {
-    margin-right: 10px;
-  }
+  width: 10vh; /* Adjust as necessary */
+  height: 100vh; /* Full height */
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: black;
+  color: #c3c1c1;
+  display: flex;
+  flex-direction: column; /* Stack children vertically */
+}
+
+.sidebar-up {
+  padding-top: 5vh; /* Padding for upper section */
+  flex: 1; /* Take up available space */
+}
+
+.sidebar-down {
+  padding-bottom: 5vh; /* Padding for lower section */
+}
+
+.sidebar-menu {
+  list-style-type: none;
+  padding: 0;
+}
+
+.sidebar-item {
+  padding: 15px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Center items horizontally */
+  cursor: pointer;
+}
+
+.sidebar-item:hover {
+  background-color: #333; /* Change background on hover */
+}
+
+.sidebar-icon {
+  width: 20px;  /* Set a consistent width */
+  height: 20px; /* Set a consistent height */
+}
+
+.sidebar-item img {
+  height: 5rem; /* Keep aspect ratio */
+}
+
+.main-logo {
+  /* Space between logo and first icon */
+  display: flex; /* Ensure the logo is also centered */
+  justify-content: center; /* Center logo horizontally */
+}

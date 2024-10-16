@@ -1,8 +1,12 @@
 
 
 .rows-container {
-    margin: 20px 20px;
-    background-color: grey;
+    margin-top: 100px;
+    background-color: #f8f9fb;
+    padding: 20px 20px;
+    border: 1px solid #d5dce1;
+    border-radius: 10px;
+    
   }
   .divider {
     width: 2px; /* Full width of the parent container */
@@ -20,9 +24,9 @@
     align-items: center;
     padding: 10px;
     border-radius: 5px;
-    margin-bottom: 10px;
-    background-color: white;
-    height: 150px;
+    height: 200px;
+    margin-bottom: 20px;
+    margin-top: 100px;
   }
   
   .row-number {
@@ -58,8 +62,10 @@
     border-radius: 50%; /* Make dots square */
   }
   .filter-container {
-    background-color: #e5dada;
-    padding: 40px;
+    border: 1px dashed #ccc;
+    padding: 60px;
+    background-color: white;
+    height: 160px;
   }
   
   .product-filter {
@@ -70,24 +76,23 @@
   .columns-container {
     display: flex;
     overflow-x: auto; /* Enable horizontal scrolling */
-    padding: 10px 0; /* Optional padding */
+    padding: 20px 20px; /* Optional padding */
+    height: 160px;
+    border: 1px dashed #ccc;
+    margin-right: 20px;
   }
   
   .column {
     min-width: 150px; /* Set a minimum width for columns */
     margin-right: 10px; /* Space between columns */
-    padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
     background-color: #fff;
   }
   
-  .uploaded-image {
-    max-width: 100%;
-    height: auto;
-  }
   
-  .add-row-button,
+  
+  .add-row-div,
   .add-column-button,
   .delete-row-button,
   .delete-column-button {
@@ -96,18 +101,30 @@
     padding: 5px 10px;
     border: none;
     border-radius: 3px;
-    background-color: #28a745;
+    background-color: grey;
     color: white;
     cursor: pointer;
   }
   
-  .add-row-button:hover,
+  .add-row-div:hover,
   .add-column-button:hover,
-  .delete-row-button:hover,
+  .delete-row-div:hover,
   .delete-column-button:hover {
-    background-color: #218838;
+    background-color: black;
   }
   
+  .add-row-div,.delete-row-div {
+    margin-top: 10px;
+    margin-right: 10px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 3px;
+    background-color: grey;
+    color: white;
+    cursor: pointer;
+    width: 35px;
+  }
+
   .dragging {
     opacity: 0.5;
   }
@@ -135,7 +152,12 @@
     border: none;
     border-radius: 7px;
     cursor: pointer;
+    transition: transform .3s ease;
   }
+  .publish:hover{
+    transform: translateY(-5px); 
+  }
+
   .filter-button {
     background-color: white;
     border: 1px solid #e5dada;
@@ -177,4 +199,70 @@
   font-size: 14px; /* Adjust as needed */
   display: inline-block; /* Make sure it fits around the text */
   margin-left: 100px;
+}
+.delete-row-div {
+  cursor: pointer;
+  opacity: 0; /* Initially hide the icon */
+  transition: opacity 0.3s; /* Add transition for smooth effect */
+  margin-right: 10px; /* Adjust spacing */
+}
+
+.row:hover .delete-row-div {
+  opacity: 1; /* Show icon on row hover */
+}
+
+.hidden {
+  display: none; /* Ensures it takes no space */
+}
+
+.visible {
+  display: block; /* Ensures it takes space */
+}
+.delete-column-button {
+  display: none; /* Hide the button by default */
+  width: 40px;
+}
+
+.columns-container:hover .delete-column-button.visible {
+  display: inline; /* Show the button on hover */
+}
+
+
+.delete-row-div {
+  display: none; /* Hide the button by default */
+}
+
+.delete-row-div.visible {
+  display: block; /* Show the button on hover */
+}
+.delete-container-box {
+  width: 40px;
+}
+
+
+.upload-icon {
+  color: black;
+  margin-bottom: 10px;
+}
+
+.uploaded-image {
+  width: 100%;
+  height: 80%;
+  object-fit: cover;
+}
+/* This will change the background color when the button is clicked or touched */
+.filter-button:active {
+  background-color: #e0f8e8; /* Super light green background */
+  color: #006400; /* Dark green text color when active */
+  border-color: #e0f8e8; /* Dark green border */
+}
+
+.filter-button:focus {
+  outline: none; /* Removes the default focus outline (optional) */
+  background-color: #e0f8e8; /* Super light green background when focused */
+  color: #006400; /* Dark green text color when focused */
+  border-color: #e0f8e8; /* Dark green border */
+}
+.image-name {
+  text-align: center;
 }

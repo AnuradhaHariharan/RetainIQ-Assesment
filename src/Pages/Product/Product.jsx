@@ -1,23 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { DndProvider, useDrag, useDrop } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import { v4 as uuidv4 } from 'uuid';
 import './Product.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
-
+import AddPhotoAlternateOutlinedIcon from '@mui/icons-material/AddPhotoAlternateOutlined';
+import Heading from '../../Components/Headings/Heading';
 
 function Product() {
   const [rows, setRows] = useState([
     {
       id: uuidv4(),
       columns: [
-        { id: uuidv4(), content: 'Upload Image', image: null },
+        { id: uuidv4(), content: 'Upload Image', image: null, imageName: '' },
       ],
     },
   ]);
 
   const addRow = () => {
-    setRows([...rows, { id: uuidv4(), columns: [{ id: uuidv4(), content: 'Upload Image', image: null }] }]);
+    setRows([...rows, { id: uuidv4(), columns: [{ id: uuidv4(), content: 'Upload Image', image: null, imageName: '' }] }]);
   };
 
   const addColumn = (rowId) => {
@@ -25,7 +26,7 @@ function Product() {
       if (row.id === rowId) {
         return {
           ...row,
-          columns: [...row.columns, { id: uuidv4(), content: 'Upload Image', image: null }],
+          columns: [...row.columns, { id: uuidv4(), content: 'Upload Image', image: null, imageName: '' }],
         };
       }
       return row;
@@ -44,6 +45,7 @@ function Product() {
               return {
                 ...column,
                 image: URL.createObjectURL(file),
+                imageName: file.name,
               };
             }
             return column;
@@ -80,19 +82,26 @@ function Product() {
     setRows(updatedRows);
   };
 
+  // Calculate total columns
+  const totalColumns = rows.reduce((max, row) => Math.max(max, row.columns.length), 0);
+
   return (
     <DndProvider backend={HTML5Backend}>
       <div className="app">
         <div className='header-container'>
-        <div className='text-badge'>
-    <p className='test-text'>
-        <i className="fa-solid fa-arrow-left"></i> 
-        <span className='custom-underline'> Test 3_staging</span>
-    </p>
-    <div className='badge'>Primary Feed</div>
-</div>
-        <button className='publish'>Publish Feed</button></div>
-        
+          <div className='text-badge'>
+            <p className='test-text'>
+              <i className="fa-solid fa-arrow-left"></i> 
+              <span className='custom-underline'> Test 3_staging</span>
+            </p>
+            <div className='badge'>Primary Feed</div>
+          </div>
+          <button className='publish'>Publish Feed</button>
+        </div>
+
+        {/* Render the Heading component */}
+        <Heading columnCount={totalColumns} />
+
         <div className="rows-container">
           {rows.map((row, index) => (
             <Row
@@ -108,7 +117,7 @@ function Product() {
             />
           ))}
         </div>
-        <button className="add-row-button" onClick={addRow}>+ Add Row</button>
+        <div className="add-row-div" onClick={addRow}><i className="fa-solid fa-plus"></i></div>
       </div>
     </DndProvider>
   );
@@ -133,32 +142,37 @@ function Row({ row, rowIndex, addColumn, handleImageUpload, deleteRow, deleteCol
     }),
   });
 
+  const [isHovered, setIsHovered] = useState(false);
+
   return (
-  
-    <div ref={ref} className={`row ${isDragging ? 'dragging' : ''}`}>
-      <div className='number-dot'>
-      <div className="row-number">{rowIndex}</div>
-      <div ref={drag} className="drag-handle">
-        <div className="dot-container">
-          {[...Array(9)].map((_, index) => (
-            <div key={index} className="dot"></div>
-          ))}
+    <div 
+      ref={ref} 
+      className={`row ${isDragging ? 'dragging' : ''}`}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <div className='delete-container-box'>
+        <div className={`delete-row-div ${isHovered ? 'visible' : 'hidden'}`} onClick={deleteRow}>
+          <i className="fa-solid fa-trash"></i>
         </div>
+      </div>
+      <div className='number-dot'>
+        <div className="row-number">{rowIndex}</div>
+        <div ref={drag} className="drag-handle">
+          <div className="dot-container">
+            {[...Array(9)].map((_, index) => (
+              <div key={index} className="dot"></div>
+            ))}
+          </div>
         </div>
       </div>
       <div className='divider'></div>
       <div className='filter-container'>
-      <div className="product-filter">
-        <button value="anarkali-kurthi" className="filter-button">
-          Product Collection
-        </button>
-        <button value="lehenga" className="filter-button">
-          Contains
-        </button>
-        <button value="saree" className="filter-button">
-          Anarkali
-        </button>
-      </div>
+        <div className="product-filter">
+          <button value="anarkali-kurthi" className="filter-button">Product Collection</button>
+          <button value="lehenga" className="filter-button">Contains</button>
+          <button value="saree" className="filter-button">Anarkali</button>
+        </div>
       </div>
       <div className='divider'></div>
       <div className="columns-container">
@@ -167,6 +181,7 @@ function Row({ row, rowIndex, addColumn, handleImageUpload, deleteRow, deleteCol
             <Column
               content={column.content}
               image={column.image}
+              imageName={column.imageName}  // Pass image name to Column
               rowId={row.id}
               columnId={column.id}
               handleImageUpload={handleImageUpload}
@@ -176,13 +191,12 @@ function Row({ row, rowIndex, addColumn, handleImageUpload, deleteRow, deleteCol
           </React.Fragment>
         ))}
       </div>
-      <button className="add-column-button" onClick={addColumn}>+ Add Column</button>
-      <button className="delete-row-button" onClick={deleteRow}>Delete Row</button>
+      <div className="add-row-div" onClick={addColumn}><i className="fa-solid fa-plus"></i></div>
     </div>
   );
 }
 
-function Column({ content, image, rowId, columnId, handleImageUpload, deleteColumn }) {
+function Column({ content, image, imageName, rowId, columnId, handleImageUpload, deleteColumn }) {
   const [{ isDragging }, ref] = useDrag({
     type: 'COLUMN',
     item: { content },
@@ -191,17 +205,49 @@ function Column({ content, image, rowId, columnId, handleImageUpload, deleteColu
     }),
   });
 
-  const [, drop] = useDrop({
-    accept: 'COLUMN',
-    drop: (item) => console.log('Dropped item:', item),
-  });
+  const [isHovered, setIsHovered] = useState(false);
+  const fileInputRef = useRef(null);
+
+  const handleIconClick = () => {
+    fileInputRef.current.click(); // Programmatically trigger the file input
+  };
 
   return (
-    <div ref={(node) => ref(drop(node))} className={`column ${isDragging ? 'dragging' : ''}`}>
-      <input type="file" accept="image/*" onChange={(e) => handleImageUpload(rowId, columnId, e)} />
-      {image && <img src={image} alt="Uploaded" className="uploaded-image" />}
-      <div className="column-content">{content}</div>
-      <button className="delete-column-button" onClick={deleteColumn}>Delete Column</button>
+    <div 
+      ref={ref} 
+      className={`column ${isDragging ? 'dragging' : ''}`} 
+      onMouseEnter={() => setIsHovered(true)} 
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <input 
+        type="file" 
+        accept="image/*" 
+        ref={fileInputRef} 
+        style={{ display: 'none' }} 
+        onChange={(e) => handleImageUpload(rowId, columnId, e)} 
+      />
+
+      {!image && (
+        <>
+          <AddPhotoAlternateOutlinedIcon 
+            className="upload-icon" 
+            onClick={handleIconClick} 
+            style={{ cursor: 'pointer', fontSize: '40px' }} 
+          />
+          <div className="column-content">{content}</div>
+        </>
+      )}
+
+      {image && (
+        <>
+          <img src={image} alt="Uploaded" className="uploaded-image" />
+          <div className="image-name">{imageName}</div> {/* Display image name */}
+        </>
+      )}
+
+      <button className={`delete-column-button ${isHovered ? 'visible' : 'hidden'}`} onClick={deleteColumn}>
+        <i className="fa-solid fa-trash"></i>
+      </button>
     </div>
   );
 }

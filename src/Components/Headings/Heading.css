@@ -1,0 +1,40 @@
+h3 {
+    font-size: 1rem; /* Font size */
+    text-align: center; /* Center-align the heading */
+    color: black; /* Dark text color */
+    margin: 20px 0; /* Margin for spacing */
+    position: relative; /* For positioning the underline */
+    font-weight: 500;
+    color: #546b9b;
+  }
+  
+  .heading:after {
+    content: ''; /* Creates a pseudo-element */
+    display: block; /* Makes it a block element */
+    width: 50%; /* Width of the underline */
+    height: 4px; /* Height of the underline */
+    background: #ff6347; /* Color of the underline */
+    margin: 10px auto; /* Centers the underline */
+    border-radius: 2px; /* Rounded edges for the underline */
+  }
+  .heading-row {
+    display: flex;
+    overflow-x: auto; /* Enables horizontal scrolling */
+    white-space: nowrap; /* Prevents wrapping of heading cells */
+    margin-bottom: -188px; /* Add gap below the heading row */
+    margin-top: 100px;
+  }
+  .heading-row::-webkit-scrollbar {
+    display: none; /* Hides the scrollbar */
+  }
+  
+  .heading-cell {
+    flex: 1; /* Allows each cell to grow equally */
+    text-align: center; /* Centers the text in each cell */
+    min-width: 120px; /* Sets a minimum width for each heading cell */
+  }
+  
+  .heading-cell h3 {
+    margin: 0; /* Removes default margin from h3 */
+    padding: 10px; /* Adds padding for better spacing */
+  }
