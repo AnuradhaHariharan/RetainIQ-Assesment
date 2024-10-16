@@ -205,46 +205,51 @@ function Column({ content, image, imageName, rowId, columnId, handleImageUpload,
     }),
   });
 
-  const [isHovered, setIsHovered] = useState(false);
+  const [isHovered, setIsHovered] = useState(false); // State to track hover status
   const fileInputRef = useRef(null);
 
   const handleIconClick = () => {
     fileInputRef.current.click(); // Programmatically trigger the file input
   };
 
+  // Toggle hover state
+  const handleMouseEnter = () => setIsHovered(true);
+  const handleMouseLeave = () => setIsHovered(false);
+
   return (
-    <div 
-      ref={ref} 
-      className={`column ${isDragging ? 'dragging' : ''}`} 
-      onMouseEnter={() => setIsHovered(true)} 
-      onMouseLeave={() => setIsHovered(false)}
+    <div
+      ref={ref}
+      className={`column ${isDragging ? 'dragging' : ''}`}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
-      <input 
-        type="file" 
-        accept="image/*" 
-        ref={fileInputRef} 
-        style={{ display: 'none' }} 
-        onChange={(e) => handleImageUpload(rowId, columnId, e)} 
+      <input
+        type="file"
+        accept="image/*"
+        ref={fileInputRef}
+        style={{ display: 'none' }}
+        onChange={(e) => handleImageUpload(rowId, columnId, e)}
       />
 
-      {!image && (
+      {!image ? (
         <>
-          <AddPhotoAlternateOutlinedIcon 
-            onClick={handleIconClick} 
+          <AddPhotoAlternateOutlinedIcon
+            onClick={handleIconClick}
             className='upload-image-icon'
           />
           <span>{content}</span>
         </>
-      )}
-      {image && (
+      ) : (
         <div className="image-container">
-          <img src={image} alt={imageName} />
-          <p>{imageName}</p>
-          <button className="delete-button" onClick={deleteColumn}>
-            <i className="fa-solid fa-trash"></i>
-          </button>
+          <img src={image} alt={imageName} className="uploaded-image" />
+          <p className="image-name">{imageName}</p>
         </div>
       )}
+
+      {/* Conditionally render delete button based on hover state */}
+      <div className={`delete-column-button ${isHovered ? 'visible' : 'hidden'}`} onClick={deleteColumn}>
+        <i className="fa-solid fa-trash"></i>
+      </div>
     </div>
   );
 }

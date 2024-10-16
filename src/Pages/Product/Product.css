@@ -89,7 +89,7 @@
     border: 1px solid #ccc;
     border-radius: 5px;
     background-color: #fff;
-  
+  position: relative;
   }
   
   
@@ -226,10 +226,14 @@
 .delete-column-button {
   display: none; /* Hide the button by default */
   width: 40px;
+  position: absolute;
+  top: 50%; /* Start at 50% from the top */
+  left: 50%; /* Start at 50% from the left */
+  transform: translate(-50%, -50%);
 }
 
 .columns-container:hover .delete-column-button.visible {
-  display: inline; /* Show the button on hover */
+  display: block; /* Show the button on hover */
 }
 
 
@@ -271,4 +275,8 @@
 }
 .image-name {
   text-align: center;
+}
+.image-container{
+  height: 100%;
+  object-fit: cover;
 }
