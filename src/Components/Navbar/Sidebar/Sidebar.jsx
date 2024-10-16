@@ -15,7 +15,7 @@ function Sidebar() {
       <div className="sidebar-up">
         <ul className="sidebar-menu">
           <li className="sidebar-item main-logo">
-            <img src="/Screenshot_2024-10-15_at_9.05.17_PM-removebg-preview.png" alt="Logo" />
+          <img src={process.env.PUBLIC_URL + '/Screenshot_2024-10-15_at_9.05.17_PM-removebg-preview.png'} alt="Logo" />
           </li>
           <li className='sidebar-item'>
             <ElectricBoltOutlinedIcon className='sidebar-icon' />
